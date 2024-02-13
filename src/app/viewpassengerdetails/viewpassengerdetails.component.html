@@ -1,0 +1,115 @@
+<app-usernavbar></app-usernavbar>
+<br>
+<br>
+<br>
+<h3 class="text-center">Passenger Details</h3>
+<hr>
+<br>
+<div class="row" *ngIf="!dataloading">
+    <div class="col-md-10 col-md-offset-1">
+        <h3 class="text-center">Loading Data</h3>
+    </div>
+</div>
+<!-- <div class="container col-md-offset-2">
+    <div class="row" *ngIf="passengers.length!=0" >
+        <br>
+        <div class="col-md-1 text-center">
+            <label>PNR Number</label>
+        </div>
+        <div class="col-md-2 text-center">
+            <label>Email</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Name</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Age</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Gender</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Seat Number</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Meals</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Status</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Action</label>
+        </div>
+        <br>
+    </div>
+    <hr>
+    <div class="row"  *ngFor="let passenger  of passengers ">
+        <br>
+        <div class="col-md-1 text-center">
+            {{passenger.pnr}}
+        </div>
+        <div class="col-md-2 text-center">
+            {{passenger.email}}
+        </div>
+        <div class="col-md-1 text-center">
+            {{passenger.name}}
+        </div>
+        <div class="col-md-1 text-center">
+            {{passenger.age}}
+        </div>
+        <div class="col-md-1 text-center">
+            {{passenger.gender}}
+        </div>
+        <div class="col-md-1 text-center">
+            {{passenger.seatNumber}}
+        </div>
+        <div class="col-md-1 text-center">
+             {{passenger.meals}}
+        </div>
+        <div class="col-md-1 text-center">
+            {{passenger.status}}
+        </div>
+        <div class="col-md-1 text-center">
+            <button class="btn btn-success" type="button" (click)="cancelAllTickets(passenger.pnr,passenger.email)" [disabled]="(passenger.status=='Cancelled')? true:false">Cancel Ticket</button>
+        </div>
+    </div>
+    <hr>
+</div> -->
+
+<div class="container" >
+<table class="table table-striped">
+    <thead>
+        <tr *ngIf="passengers.length!=0">
+            <th scope="col" class="text-center">PNR Number</th>
+            <th scope="col" class="text-center">Email</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Age</th>
+            <th scope="col" class="text-center">Gender</th>
+            <th scope="col" class="text-center">Seat Number</th>
+            <th scope="col" class="text-center">Meals</th>
+            <th scope="col" class="text-center">Status</th>
+            <th scope="col" class="text-center">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let passenger  of passengers ">
+            <td class="text-center">{{passenger.pnr}}</td>
+            <td class="text-center">{{passenger.email}}</td>
+            <td class="text-center">{{passenger.name}}</td>
+            <td class="text-center">{{passenger.age}}</td>
+            <td class="text-center">{{passenger.gender}}</td>
+            <td class="text-center">{{passenger.seatNumber}}</td>
+            <td class="text-center">{{passenger.meals}}</td>
+            <td class="text-center">{{passenger.status}}</td>
+            <td class="text-center"><button type="button" style="background: none!important;
+                border: none;
+                padding: 0!important;
+                /*optional*/
+                font-family: arial, sans-serif;
+                color: #069;
+                text-decoration: none;
+                cursor: pointer;" (click)="cancelSingleTicket(passenger.pnr,passenger.email)" [disabled]="(passenger.status=='Cancelled')? true:false">Cancel Ticket</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>

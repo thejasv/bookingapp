@@ -1,0 +1,91 @@
+<app-adminnavbar></app-adminnavbar>
+<br>
+<br>
+<br>
+<h3 class="text-center">List Of Airlines</h3>
+<hr>
+<div class="row" *ngIf="airlines.length==0">
+    <div class="col-md-10 col-md-offset-1">
+        <h3 class="text-center">No Airlines details to show.</h3>
+    </div>
+</div>
+<!-- <div class="container col-md-offset-2">
+    <div class="row" *ngFor="let airline of airlines">
+        <br>
+        <div class="col-md-2">
+                <label>Airline Name :</label>{{airline.airlineName}}<br>
+                <label *ngIf="airline.isActive==true">Airline Active</label>
+                <label *ngIf="airline.isActive==false">Airline is not Active</label>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success" type="button" (click)="onAddFlight(airline.id)">Add Flight</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success" type="button" (click)="onActivateAirline(airline.id)" [disabled]="(airline.isActive==false)? false:true">Activate Airline</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success" type="button" (click)="onDeActivateAirline(airline.id)" [disabled]="(airline.isActive==true)? false:true" >Deactivate Airline</button>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-success" type="button" (click)="onGetAllFlights(airline.id)">View Flights</button>
+        </div>
+        <br>
+    </div> 
+</div> -->
+<div class="container">
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th class="text-center " scope="col">Airline Name</th>
+            <th class="text-center " scope="col">Airline Status</th>
+            <th class="text-center " scope="col">Action</th>
+            <th class="text-center "scope="col">Action</th>
+            <th class="text-center "scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let airline of airlines">
+            <td class="text-center ">{{airline.airlineName}}</td>
+            <td class="text-center" *ngIf="airline.isActive==true"> Active</td>
+            <td class="text-center" *ngIf="airline.isActive==false">Not Active</td>
+            <td class="text-center">
+                <button type="button" 
+                style="background: none!important;
+                    border: none;
+                    padding: 0!important;
+                    /*optional*/
+                    font-family: arial, sans-serif;
+                    color: #069;
+                    text-decoration: none;
+                    cursor: pointer;"(click)="onAddFlight(airline.id)">
+                Add Flight</button>
+            </td>
+            <td class="text-center"><button type="button" style="background: none!important;
+                border: none;
+                padding: 0!important;
+                /*optional*/
+                font-family: arial, sans-serif;
+                color: #069;
+                text-decoration: none;
+                cursor: pointer;" (click)="onActivateAirline(airline.id)" [disabled]="(airline.isActive==false)? false:true">Activate Airline</button></td>
+            <td class="text-center"><button type="button" style="background: none!important;
+                border: none;
+                padding: 0!important;
+                /*optional*/
+                font-family: arial, sans-serif;
+                color: #069;
+                text-decoration: none;
+                cursor: pointer;" (click)="onDeActivateAirline(airline.id)" [disabled]="(airline.isActive==true)? false:true">DeActivate Airline</button></td>
+            <td class="text-center"><button type="button" style="background: none!important;
+                border: none;
+                padding: 0!important;
+                /*optional*/
+                font-family: arial, sans-serif;
+                color: #069;
+                text-decoration: none;
+                cursor: pointer;"(click)="onGetAllFlights(airline.id)">View Flights</button></td>
+        </tr>
+    </tbody>
+</table>
+</div>
+

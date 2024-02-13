@@ -1,0 +1,154 @@
+<app-usernavbar></app-usernavbar>
+<br>
+<br>
+<br>
+<h3 class="text-center">Search By PNR</h3>
+<hr>
+<br>
+<div class="container col-md-4 col-md-offset-4" >
+    <form name="pnrform" #pnrform="ngForm" (submit)="onSubmit(Pnr)">
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <input type="text" class="form-control" id="pnr" name="pnr" [(ngModel)]="Pnr.pnr" #pnr="ngModel" placeholder="Enter the Pnr number " required>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class=" col-md-12 text-center">
+                <button type="submit" class="btn btn-primary" [disabled]="pnrform.invalid">Search</button>
+                <br>
+                <br>
+                <button  class= "btn btn-primary" type="button" (click)="captureScreen()" [disabled]="printbutton">Print Ticket</button>
+            </div>
+        </div>
+    </form>
+    <br>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!-- <div class="row" *ngIf="booking!=null">
+    <br>
+    <div class="col-md-1">
+        <label>PNR Number</label>
+    </div>
+    <div class="col-md-1">
+        <label>Flight Number</label>
+    </div>
+    <div class="col-md-1">
+        <label>Airline Name</label>
+    </div>
+    <div class="col-md-1">
+        <label>Departure</label>
+    </div>
+    <div class="col-md-1">
+        <label>Destination</label>
+    </div>
+    <div class="col-md-1">
+        <label>Departure Date</label>
+    </div>
+    <div class="col-md-1">
+        <label>Number of Tickets</label>
+    </div>
+    <div class="col-md-1">
+        <label>Ticket Cost</label>
+    </div>
+    <div class="col-md-1">
+        <label>Action</label>
+    </div>
+    <div class="col-md-1">
+        <label>Action</label>
+    </div>
+    <br>
+</div>
+<hr>
+<div class="row" *ngIf="booking!=null">
+    <br>
+    <div class="col-md-1">
+        {{booking.pnr}}
+    </div>
+    <div class="col-md-1">
+        {{booking.flightNumber}}
+    </div>
+    <div class="col-md-1">
+        {{booking.flightName}}
+    </div>
+    <div class="col-md-1">
+        {{booking.departure}}
+    </div>
+    <div class="col-md-1">
+        {{booking.destination}}
+    </div>
+    <div class="col-md-1">
+        {{booking.departureDate}}
+    </div>
+    <div class="col-md-1">
+        {{booking.numberOfTickets}}
+    </div>
+    <div class="col-md-1">
+         {{booking.ticketCost}}
+    </div>
+    <div class="col-md-1">
+        <button class="btn btn-success" type="button" (click)="getPassengerDeatils(booking.pnr)">View Details</button>
+    </div>  
+    <div class="col-md-1">
+        <button class="btn btn-success" type="button" (click)="cancelAllTickets(booking.pnr)" [disabled]="(booking.numberOfTickets=='0' && booking.email!=sessionStorage.getItem('email'))? true:false">Cancel Journey</button>
+    </div>
+</div> -->
+<br>
+<br>
+<div  class="container" style="border: 1px solid black;" id="ticketcard">
+    <br>
+    <p class="text-center" *ngIf="invalid==true">Ticket-Details</p>
+    <table class="table table-striped">
+        <thead >
+            <tr *ngIf="booking!=null" >
+                <th scope="col" class="text-center">PNR</th>
+                <th scope="col" class="text-center">Email</th>
+                <th scope="col" class="text-center">Airline Name</th>
+                <th scope="col" class="text-center">Departure</th>
+                <th scope="col" class="text-center">Destination</th>
+                <th scope="col" class="text-center">Departure Date</th>
+                <th scope="col" class="text-center">No of Tickets</th>
+                <th scope="col" class="text-center">Ticket Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngIf="booking!=null" >
+                <td>{{booking.pnr}}</td>
+                <td>{{booking.email}}</td>
+                <td>{{booking.flightName}}</td>
+                <td>{{booking.departure}}</td>
+                <td>{{booking.destination}}</td>
+                <td>{{booking.departureDate}}</td>
+                <td class="text-center">{{booking.numberOfTickets}}</td>
+                <td class="text-center">{{booking.ticketCost}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <p *ngIf="invalid==true" class="text-center">Passengers Details</p>
+    <table class="table table-striped">
+        <tbody>
+            <tr *ngFor="let passenger of passengers">
+                <td>{{passenger.name}}</td>
+                <td>{{passenger.email}}</td>
+                <td>{{passenger.age}}</td>
+                <td *ngIf="passenger.gender=='male'">M</td>
+                <td *ngIf="passenger.gender=='female'">F</td>
+                <td *ngIf="passenger.gender=='others'">O</td>
+                <td>{{passenger.seatNumber}}</td>
+                <td>{{passenger.status}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+</div>

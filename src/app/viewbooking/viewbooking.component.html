@@ -1,0 +1,132 @@
+<app-usernavbar></app-usernavbar>
+<br>
+<br>
+<h3 class="text-center">Booking Details List</h3>
+<hr>
+<br>
+<div class="row" *ngIf="!dataloading">
+    <div class="col-md-10 col-md-offset-1">
+        <h3 class="text-center">Loading Data</h3>
+    </div>
+</div>
+<div class="row" *ngIf="bookings.length==0&&dataloading">
+    <div class="col-md-10 col-md-offset-1">
+        <h3 class="text-center">No Bookings details to show.</h3>
+    </div>
+</div>
+<!-- <div class="container col-md-offset-1 " >
+    <div class="row" *ngIf="bookings.length!=0" >
+        <div class="col-md-1 text-center ">
+            <label>PNR Number</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Flight Number</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Airline Name</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Departure</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Destination</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Departure Date</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Number of Tickets</label>
+        </div>
+        <div class="col-md-1 text-center">
+            <label>Ticket Cost</label>
+        </div>
+        <div class="col-md-1  text-center ">
+            <label>Action</label>
+        </div>
+        <div class="col-md-1 col-md-offset-1 text-center ">
+            <label>Action</label>
+        </div>
+    </div>
+    <br>
+    <div class="row"  *ngFor="let booking  of bookings ">
+        <div class="col-md-1">
+            {{booking.pnr}}
+        </div>
+        <div class="col-md-1">
+            {{booking.flightNumber}}
+        </div>
+        <div class="col-md-1">
+            {{booking.flightName}}
+        </div>
+        <div class="col-md-1">
+            {{booking.departure}}
+        </div>
+        <div class="col-md-1">
+            {{booking.destination}}
+        </div>
+        <div class="col-md-1">
+            {{booking.departureDate}}
+        </div>
+        <div class="col-md-1 text-center">
+            {{booking.numberOfTickets}}
+        </div>
+        <div class="col-md-1 text-center">
+             {{booking.ticketCost}}
+        </div>
+        <div class="col-md-1  text-center ">
+            <button class="btn btn-success" type="button" (click)="getPassengerDeatils(booking.pnr)">Passenger Details</button>
+        </div>
+        <div class="col-md-1 col-md-offset-1 text-center">
+            <button class="btn btn-success" type="button" (click)="cancelAllTickets(booking.pnr)" [disabled]="(booking.numberOfTickets=='0')? true:false">Cancel Journey</button>
+        </div>
+    </div>
+    <br>
+</div> -->
+<div style="width: max-content;" class="col-md-offset-1" >
+    <table class="table table-bordered">
+        <thead >
+            <tr>
+                <th scope="col" class="text-center">PNR Number</th>
+                <th scope="col" class="text-center">Flight Number</th>
+                <th scope="col" class="text-center">Airline Name</th>
+                <th scope="col" class="text-center">Departure</th>
+                <th scope="col" class="text-center">Destination</th>
+                <th scope="col" class="text-center">departure Date</th>
+                <th scope="col" class="text-center">No of Tickets</th>
+                <th scope="col" class="text-center">Ticket Cost</th>
+                <th scope="col" class="text-center">Action</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let booking  of bookings ">
+                <td class="text-center">{{booking.pnr}}</td>
+                <td class="text-center">{{booking.flightNumber}}</td>
+                <td class="text-center">{{booking.flightName}}</td>
+                <td class="text-center">{{booking.departure}}</td>
+                <td class="text-center">{{booking.destination}}</td>
+                <td class="text-center">{{booking.departureDate}}</td>
+                <td class="text-center">{{booking.numberOfTickets}}</td>
+                <td class="text-center">{{booking.ticketCost}}</td>
+                <td class="text-center"><button type="button" style="background: none!important;
+                    border: none;
+                    padding: 0!important;
+                    /*optional*/
+                    font-family: arial, sans-serif;
+                    color: #069;
+                    text-decoration: none;
+                    cursor: pointer;" (click)="getPassengerDeatils(booking.pnr)">Passenger Details</button>
+                </td>
+                <td class="text-center" ><button  type="button" style="background: none!important;
+                    border: none;
+                    padding: 0!important;
+                    /*optional*/
+                    font-family: arial, sans-serif;
+                    color: #069;
+                    text-decoration: none;
+                    cursor: pointer;" (click)="cancelAllTickets(booking.pnr)"  [disabled]="(booking.numberOfTickets=='0')? true:false" >Cancel Journey</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

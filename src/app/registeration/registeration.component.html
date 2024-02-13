@@ -1,0 +1,51 @@
+<app-navbar></app-navbar>
+<hr>
+<br>
+<h3 class="text-center">User Register Form</h3>
+<hr>
+<div class="container" style="background-color: rgb(129, 190, 250); border-radius: 5px;">
+    <br>
+    <form #registrationForm="ngForm" (ngSubmit)="onSubmit(User)" >
+        <div class="form-group" [class.has-error]="email.invalid && email.touched">
+            <input type="text" class="form-control" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email" [(ngModel)]="User.email" name="Email" placeholder="Email"  required #email="ngModel">
+            <span class="help-block" *ngIf="email.invalid && email.touched">Email is Required</span>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6" [class.has-error]="name.invalid && name.touched">
+                <input type="text" class=" form-control" id="name" minlength="5" placeholder="Name"  [(ngModel)]="User.name" name="name"  minlength="5" #name="ngModel" required>
+                <span class="help-block" *ngIf="name.invalid && name.touched">Name is Required</span>
+            </div>
+            <div class="col-md-6" [class.has-error]="password.invalid && password.touched">
+                <input type="password"  id="password"  [(ngModel)]="User.password" name="password" #password="ngModel" class="form-control"  placeholder="Enter password" minlength="6" required>
+                <span class="help-block" *ngIf="password.invalid && password.touched">Password is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <select id="gender" class="form-control" [(ngModel)]="User.gender" #gender="ngModel" name="gender"  required>
+                    <option value="" disabled hidden selected>select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">Others</option>
+                </select>
+                <span class="help-block" *ngIf="gender.invalid && gender.touched">Gender is Required</span>
+            </div>
+            <div class="col-md-4"[class.has-error]="age.invalid && age.touched" >
+                <input type="number" class="form-control" placeholder="Age" id="age"  [(ngModel)]="User.age" name="age" maxlength="2" #age="ngModel"  required>
+                <span class="help-block" *ngIf="age.invalid && age.touched">Age is Required</span>
+            </div>
+            <div class="col-md-4" [class.has-error]="mobile.invalid && mobile.touched">
+                <input type="number" id="mobile" class="form-control" placeholder="Mobile Number" [(ngModel)]="User.mobile" name="mobile" #mobile="ngModel" minlength="10" maxlength="10" required>
+                <span class="help-block" *ngIf="mobile.invalid && mobile.touched">Mobile is Required</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" type="submit" [disabled]="registrationForm.invalid">Register</button>
+            </div>
+        </div>
+    </form>
+    <p class="text-center">Already have account ? <a routerLink=''>click here</a></p>
+</div>
+

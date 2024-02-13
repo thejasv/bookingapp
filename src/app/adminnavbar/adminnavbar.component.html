@@ -1,0 +1,16 @@
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: rgb(129, 190, 250);">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a routerLink="/home-page" class="navbar-brand" style="color: black;">Flight Booking System</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a routerLink='/addairlinepage' style="font-size: medium;color: black;">Add Airline</a></li>
+        <li><a routerLink='/viewairlines' style="font-size: medium;color: black;">View Airlines</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a  role="button" (click)="onLogout()" style="font-size: medium;color: black;"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+      </ul>
+    </div>
+</nav>
+
+

@@ -1,0 +1,132 @@
+<app-adminnavbar></app-adminnavbar>
+<br>
+<br>
+<br>
+<div class="row" *ngIf="flights.length==0">
+    <div class="col-md-10 col-md-offset-1">
+        <h3 class="text-center">No Flights details to show.</h3>
+    </div>
+</div>
+<h3 class="text-center" *ngIf="flights.length!=0">List Of Flights</h3>
+<hr>
+<!-- <div class="container col-md-offset-2" *ngIf="flights.length!=0">
+    <div class="row"  >
+        <div class="col-md-1">
+            <label>Flight Number</label>
+        </div>
+        <div class="col-md-1">
+            <label>Airline Id</label>
+        </div>
+        <div class="col-md-1">
+            <label>Airline Name</label>
+        </div>
+        <div class="col-md-1">
+            <label>Departure</label>
+        </div>
+        <div class="col-md-1">
+            <label>Destination</label>
+        </div>
+        <div class="col-md-1">
+            <label>Schedule Days</label>
+        </div>
+        <div class="col-md-1">
+            <label>Ticket Cost</label>
+        </div>
+        <div class="col-md-1">
+            <label>Number of BC seats</label>
+        </div>
+        <div class="col-md-1">
+            <label>Number of EC seats</label>
+        </div>
+        <div class="col-md-1">
+            <label>Action</label>
+        </div>
+    </div>
+    <hr>
+    <div class="row"  *ngFor="let flight of flights">
+        <div class="col-md-1">
+            {{flight.flightNumber}}
+        </div>
+        <div class="col-md-1">
+            {{flight.airlineId}}
+        </div>
+        <div class="col-md-1">
+            {{flight.flightName}}
+        </div>
+        <div class="col-md-1">
+            {{flight.departure}}
+        </div>
+        <div class="col-md-1">
+            {{flight.destination}}
+        </div>
+        <div class="col-md-1">
+             <span *ngIf="flight.scheduleDays==0">Daily</span>
+            <span *ngIf="flight.scheduleDays==1">Week days</span>
+            <span *ngIf="flight.scheduleDays==2">Week Ends</span>
+        </div>
+        <div class="col-md-1">
+            {{flight.ticketCost}}
+        </div>
+        <div class="col-md-1">
+            {{flight.numberOfBusinessClassSeats}}
+        </div>
+        <div class="col-md-1">
+            {{flight.numberOfEconomyClassSeats}}
+        </div>
+        <div class="col-md-1">
+            <button class="btn btn-success" type="button" (click)="redirectToEditPage(flight.flightNumber)">Edit Flight</button>
+        </div>
+        <br>
+        <hr>
+    </div>  
+</div> -->
+
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr *ngIf="flights.length!=0">
+                <th scope="col" class="text-center">Flight Number</th>
+                <th scope="col" class="text-center">Airline Id</th>
+                <th scope="col" class="text-center">Airline Name</th>
+                <th scope="col" class="text-center">Departure</th>
+                <th scope="col" class="text-center">Destination</th>
+                <th scope="col" class="text-center">Schedule Days</th>
+                <th scope="col" class="text-center">Ticket Cost</th>
+                <th scope="col" class="text-center">Number of BC seats</th>
+                <th scope="col" class="text-center">Number of EC seats</th>
+                <th scope="col" class="text-center">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  *ngFor="let flight of flights" >
+                <td class="text-center">{{flight.flightNumber}}</td>
+                <td class="text-center">{{flight.airlineId}}</td>
+                <td class="text-center">{{flight.flightName}}</td>
+                <td class="text-center">{{flight.departure}}</td>
+                <td class="text-center">{{flight.destination}}</td>
+                <td class="text-center" *ngIf="flight.scheduleDays==0">Daily</td>
+                <td  class="text-center" *ngIf="flight.scheduleDays==1">Week days</td>
+                <td  class="text-center" *ngIf="flight.scheduleDays==2">Week Ends</td>
+                <td class="text-center">{{flight.ticketCost}}</td>
+                <td class="text-center">{{flight.numberOfBusinessClassSeats}}</td>
+                <td class="text-center">{{flight.numberOfEconomyClassSeats}}</td>
+                <td class="text-center"><a type="button" (click)="redirectToEditPage(flight.flightNumber)">Edit Flight</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+   
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+        
+ 
+

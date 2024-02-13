@@ -1,0 +1,39 @@
+<app-adminnavbar></app-adminnavbar>
+<br>
+<br>
+<h3 class="text-center">Add Airline</h3>
+<hr>
+<br>  
+<div class="container col-md-4 col-md-offset-4" style="background-color: rgb(129, 190, 250); border-radius: 5px;">
+    <br>
+    <form name="AddAirline" #AddAirline="ngForm" (ngSubmit)="onSubmit(airline)">
+    <div class="row" [class.has-error]="airlineName.invalid && airlineName.touched">
+        <div class="col-md-12">
+            <label for="username" class="control-label">Airline Name</label> 
+            <input type="text" class="form-control" id="airlineName" pattern="[a-zA-Z ]*"  [(ngModel)]="airline.airlineName" name="airlineName"  #airlineName="ngModel" minlength="5" placeholder="Enter Airline Name" required>
+            <span class="help-block" *ngIf="airlineName.invalid && airlineName.touched">Email is required</span>
+        </div>
+    </div>
+    <br>
+    <div class="row" [class.has-error]="isactive.invalid && isactive.touched">
+        <div class="col-md-12">
+            <label class="control-label" for="password">Is Airline Active ?</label>
+            <select class="form-control" [(ngModel)]="airline.isactive" #isactive="ngModel" name="isactive" id="isactive" required>
+                <option value=""selected disabled>Select Duartion</option>
+                <option value="true">True</option>
+                <option value="false">false</option>
+            </select>
+            <span class="help-block" *ngIf="isactive.invalid && isactive.touched">Please select true or false</span>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-success" type="submit" [disabled]="AddAirline.invalid">Add Airline</button>
+        </div>
+    </div>
+    </form>    
+</div>   
+
+

@@ -1,0 +1,63 @@
+<app-usernavbar></app-usernavbar>
+<br>
+<br>
+<h3 class="text-center">Passenger Details</h3>
+<hr>
+<br>
+<div class="container">
+    <div class="row text-center">
+        <span class="btn btn-success" (click)="addpassenger()">Add Passenger</span>
+    </div>
+    <br>
+    <br>
+    <form name="passengerform" #passengerform="ngForm" (ngSubmit)="onSubmit()">
+        <div class=" row" *ngFor="let ticket of Passengers ;let i=index">
+            <div class=" form-group col-md-2" [class.has-error]="email.invalid && email.touched">
+                <input type="text" class=" form-control" id="email"  placeholder="Passenger Email"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" [(ngModel)]="ticket.email" name="email{{i}}" #email="ngModel"  required>
+                <span class="help-block" *ngIf="email.invalid && email.touched">Email is Required</span>
+            </div>
+            <div class=" form-group col-md-2" [class.has-error]="name.invalid && name.touched">
+                <input type="text"  id="name"  [(ngModel)]="ticket.name" name="name{{i}}" #name="ngModel" class="form-control"  placeholder="Passenger name"  minlength="5"  required>
+                <span class="help-block" *ngIf="name.invalid && name.touched">Passenger Name is Required</span>
+            </div>
+            <div class=" form-group col-md-1" [class.has-error]="age.invalid && age.touched">
+                <input type="number"  id="age"  [(ngModel)]="ticket.age" name="age{{i}}" #age="ngModel" class="form-control"  placeholder="Age"   required>
+                <span class="help-block" *ngIf="age.invalid && age.touched">Age is Required</span>
+            </div>
+            <div class=" form-group col-md-2">
+                <select class="form-control" [(ngModel)]="ticket.gender" name="gender{{i}}" #gender="ngModel" id="gender"  required>
+                    <option value="" disabled hidden selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="others">others</option>
+                </select>
+                <span class="help-block" *ngIf="gender.invalid && gender.touched">Gender is Required</span>
+            </div>
+            <div class=" form-group col-md-2" [class.has-error]="seatNumber.invalid && seatNumber.touched">
+                <select class="form-control" [(ngModel)]="ticket.seatNumber" name="seatNumber{{i}}" #seatNumber="ngModel" id="seatNumber"  required>
+                    <option value="" disabled hidden selected>Select seatNumber</option>
+                    <option *ngFor="let seat of seats" [value]="seat">{{seat}}</option>
+                </select>
+                <span class="help-block" *ngIf="seatNumber.invalid && seatNumber.touched">SeatNUmber is Required</span>
+            </div>
+            <div class=" form-group col-md-2">
+                <select class="form-control" [(ngModel)]="ticket.meals" name="meals{{i}}" #meals="ngModel" id="meals"  required>
+                    <option value="" disabled hidden selected>Choose Meals Type</option>
+                    <option value="NonVeg">Non Vegeterian</option>
+                    <option value="Veg">Vegeterian</option>
+                </select>
+                <span class="help-block" *ngIf="meals.invalid && meals.touched">Meal is Required</span>
+            </div>
+            <div class="form-group col-md-1" *ngIf="i!=0">
+                <span class="btn btn-danger" (click)="removePassenger(i)">-</span>
+            </div>
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary" type="submit" [disabled]="passengerform.invalid">Book</button>
+            </div>
+        </div>
+    </form>
+</div>
+

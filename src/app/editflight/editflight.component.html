@@ -1,0 +1,77 @@
+<app-adminnavbar></app-adminnavbar>
+<br>
+<br>
+<h3 class="text-center">Edit Flight</h3>
+<hr>
+<br>  
+<div class="container" style="background-color: rgb(129, 190, 250); border-radius: 5px;">
+    <form  name="EditFlight" #EditFlight="ngForm" (ngSubmit)="onSubmit(flight)">
+        <br>
+        <div class="form-group row" >
+            <div class="col-md-12" [class.has-error]="flightNumber && flightNumber.touched">
+                <input type="text" class="form-control"  id="flightNumber" [(ngModel)]="flight.flightNumber" pattern="[a-zA-Z0-9 ]*" name="flightNumber" minlength="5" placeholder="Flight Number" #flightNumber="ngModel" disabled required>
+                <span class="help-block" *ngIf="flightNumber.invalid && flightNumber.touched">flightnumber is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6" [class.has-error]="departure.invalid && departure.touched">
+                <input type="text" class=" form-control" id="departure" minlength="5" placeholder="Departure"  pattern="[a-zA-Z ]*"  [(ngModel)]="flight.departure" name="departure" #departure="ngModel"  required>
+                <span class="help-block" *ngIf="departure.invalid && departure.touched">Departure is Required</span>
+            </div>
+            <div class="col-md-6" [class.has-error]="destination.invalid && destination.touched">
+                <input type="text"  id="destination"  [(ngModel)]="flight.destination" name="destination" pattern="[a-zA-Z ]*" #destination="ngModel" class="form-control"  placeholder="Destination"   required>
+                <span class="help-block" *ngIf="destination.invalid && destination.touched">Destination is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-6" [class.has-error]="startDate.invalid && startDate.touched">
+                <input type="date"  id="startdate"  [(ngModel)]="flight.startDate" name="startDate"  min="{{today | date:'yyyy-MM-dd'}}" #startDate="ngModel" class="form-control"  placeholder="Start Date"   required>
+                <span class="help-block" *ngIf="startDate.invalid && startDate.touched">Departure date is Required</span>
+            </div>
+            <div class="col-md-6" [class.has-error]="endDate.invalid && endDate.touched">
+                <input type="date"  id="enddate"  [(ngModel)]="flight.endDate" name="endDate" min="{{today | date:'yyyy-MM-dd'}}" #endDate="ngModel" class="form-control"  placeholder="End date"   required>
+                <span class="help-block" *ngIf="endDate.invalid && endDate.touched">Departure date is Required</span>
+            </div>
+        </div>
+        <div class="form-group row" >
+            <div class="col-md-4" [class.has-error]="instrumentUsed.invalid && instrumentUsed.touched">
+                <input type="text"  id="instrumentused"  [(ngModel)]="flight.instrumentUsed" name="instrumentused" pattern="[a-zA-Z0-9 ]*" #instrumentUsed="ngModel" class="form-control"  placeholder="Instrument Used"   required>
+                <span class="help-block" *ngIf="instrumentUsed.invalid && instrumentUsed.touched">Instrument used is Required</span>
+            </div>
+            <div class="col-md-4">
+               <select class="form-control" [(ngModel)]="flight.scheduleDays" name="scheduleDays" #scheduleDays="ngModel" id="scheduleDays"  required>
+                   <option value="" disabled hidden selected>Select Schedule Days</option>
+                   <option value="0">Daily</option>
+                   <option value="1">Week Days</option>
+                   <option value="2">Week Ends</option>
+               </select>
+               <span class="help-block" *ngIf="scheduleDays.invalid && scheduleDays.touched">scheduledays is Required</span>
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="number" [(ngModel)]="flight.ticketCost" name="ticketCost" #ticketCost="ngModel"  placeholder="Enter ticket cost" required>
+                <span class="help-block" *ngIf="ticketCost.invalid && ticketCost.touched">ticket cost is Required</span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-4">
+                <input type="number" class="form-control"  [(ngModel)]="flight.numberOfBusinessClassSeats" #numberOfBusinessClassSeats="ngModel" name="numberOfBusinessClassSeats"   placeholder="No of Business class seats" required>
+                <span class="help-block" *ngIf="numberOfBusinessClassSeats.invalid && numberOfBusinessClassSeats.touched">No of bussiness class seats is Required</span>
+            </div>
+            <div class="col-md-4">
+                <input type="number" class="form-control"  [(ngModel)]="flight.numberOfEconomyClassSeats" #numberOfEconomyClassSeats="ngModel" name="numberOfEconomyClassSeats"   placeholder="No of economy seats" required>
+                <span class="help-block" *ngIf="numberOfEconomyClassSeats.invalid && numberOfEconomyClassSeats.touched">No of economy class seats  is Required</span>
+            </div>  
+            <div class="col-md-4">
+                <input type="time" class="form-control"  [(ngModel)]="flight.departureTime" #departureTime="ngModel" name="departureTime"   placeholder="Enter Departure time" required>
+                <span class="help-block" *ngIf="departureTime.invalid && departureTime.touched">Departure Time  is Required</span>
+            </div>  
+        </div>
+        <br>
+        <div class="form-group row">
+            <div class="col-md-12 text-center">
+                <button class="btn btn-primary"  type="submit" [disabled]="EditFlight.invalid">Update Flight</button>
+            </div>
+        </div>
+    </form>
+</div>
+
